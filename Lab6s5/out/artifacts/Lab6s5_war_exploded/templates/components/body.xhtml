@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: Valerie
+  Date: 09.08.2014
+  Time: 17:24
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Simple JSF Facelets page</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h:dataTable value="#{requestBean.userList}" var="user" border="1">
+            <h:column>
+                <f:facet name="header">Login</f:facet>
+                #{user.login}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Password</f:facet>
+                #{user.password}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Подробнее</f:facet>
+                <h:commandLink action="#{sessionBean.selectUserMessages(user.userId)}" value="Подробнее"/>
+            </h:column>
+        </h:dataTable>
+        <h:inputText id="text" value="#{ajaxSessionBean.text}"/>
+        <h:commandButton value="Hello">
+            <f:ajax execute="text" render="output"/>
+        </h:commandButton>
+        <h:outputText id="output" value="#{ajaxSessionBean.makeMeSandwich()}"/>
+    </h:form>
+</h:body>
+
+</html>

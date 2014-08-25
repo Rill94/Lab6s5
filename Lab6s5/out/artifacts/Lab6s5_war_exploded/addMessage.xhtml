@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: Valerie
+  Date: 09.08.2014
+  Time: 17:43
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>Simple JSF Facelets page</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h:panelGrid columns="3">
+            <h:outputText value="Сообщение:"/>
+            <h:inputText id="textid" value="#{sessionBean.text}"/>
+            <h:message for="textid"/>
+        </h:panelGrid>
+        <h:commandButton action="#{sessionBean.addMessage}" value="Добавить сообщение"/>
+        <br/>
+
+    </h:form>
+    <h:form>
+        <h:commandLink value="Назад" action="#{sessionBean.selectUserMessages(sessionBean.userId)}"/>
+    </h:form>
+</h:body>
+
+</html>
